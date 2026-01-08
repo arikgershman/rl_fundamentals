@@ -1,6 +1,6 @@
 # RL Fundamentals 🤖
 
-This repository contains foundational Reinforcement Learning (RL) implementations developed as part of my research training at the [EXACT Lab](https://exact.umd.edu/) at UMD.
+This repository contains foundational **Reinforcement Learning (RL)** implementations developed as part of my research training at the [EXACT Lab](https://exact.umd.edu/) at UMD.
 
 The goal of this collection is to demonstrate proficiency in both tabular methods and Deep Reinforcement Learning (DRL) using practice standard environments, with the goal of applying these techniques to dexterous robotic manipulation.
 
