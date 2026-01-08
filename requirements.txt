@@ -7,3 +7,4 @@ tqdm
 moviepy
 pygame
 pandas
+opencv-python
