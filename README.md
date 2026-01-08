@@ -1,10 +1,10 @@
-# RL Fundamentals
+# RL Fundamentals 🤖
 
-This repository contains foundational Reinforcement Learning (RL) implementations developed as part of my research training at the **EXACT Lab (University of Maryland, College Park)**.
+This repository contains foundational Reinforcement Learning (RL) implementations developed as part of my research training at the [EXACT Lab](https://exact.umd.edu/) at UMD.
 
-The goal of this collection is to demonstrate proficiency in both tabular methods and Deep Reinforcement Learning (DRL) using standard environments.
+The goal of this collection is to demonstrate proficiency in both tabular methods and Deep Reinforcement Learning (DRL) using practice standard environments, with the goal of applying these techniques to dexterous robotic manipulation.
 
-## 📂 Repository Structure
+## Repository Structure
 
 ### 1. Q-Learning (Tabular)
 Located in `q_learning/`:
@@ -24,11 +24,11 @@ Located in `ppo/`:
     * **Technique:** Uses a **CnnPolicy** (Convolutional Neural Network) to extract features from image frames (RGB states).
     * **Environment:** `CarRacing-v3`.
 
-## 🛠️ Installation
+## Installation
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/arikgershman/rl_fundamentals.git](https://github.com/arikgershman/rl_fundamentals.git)
+   git clone https://github.com/arikgershman/rl_fundamentals.git
    cd rl_fundamentals
    ```
 
@@ -37,7 +37,7 @@ Located in `ppo/`:
    pip install -r requirements.txt
    ```
 
-## 🚀 Usage
+## Usage
 
 **Running the Q-Learning Agent:**
 ```bash
@@ -51,6 +51,6 @@ python ppo/carracing_ppo.py
 ```
 *Output: Trains the agent for 25k timesteps and renders the result.*
 
-## 🔬 Context
+## Context
 
-These implementations serve as preliminary work for broader research into robot learning and risk analysis conducted at the EXACT Lab. The focus is on understanding the transition from discrete state-space planning to high-dimensional continuous control.
+These implementations serve as preliminary work for broader research into robot learning and risk analysis conducted at the [EXACT Lab](https://exact.umd.edu/). The focus is on understanding the transition from discrete state-space planning to high-dimensional continuous control.
