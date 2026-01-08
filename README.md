@@ -28,7 +28,7 @@ Located in `ppo/`:
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/rl_fundamentals.git](https://github.com/YOUR_USERNAME/rl_fundamentals.git)
+   git clone [https://github.com/arikgershman/rl_fundamentals.git](https://github.com/arikgershman/rl_fundamentals.git)
    cd rl_fundamentals
    ```
 
