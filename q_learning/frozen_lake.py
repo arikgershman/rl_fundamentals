@@ -1,9 +1,11 @@
 from collections import defaultdict
 import gymnasium as gym
 import numpy as np
+from tqdm import tqdm
+from matplotlib import pyplot as plt
 
 
-class BlackjackAgent:
+class QLearningAgent:
     def __init__(
         self,
         env: gym.Env,
@@ -71,8 +73,7 @@ class BlackjackAgent:
         self.epsilon = max(self.final_epsilon, self.epsilon - self.epsilon_decay)
 
 
-## TRAINING THE AGENT
-
+# TRAINING THE AGENT
 # hyperparameters
 learning_rate = 0.01
 n_episodes = 100_000
@@ -80,25 +81,24 @@ start_epsilon = 1.0
 epsilon_decay = start_epsilon / (n_episodes / 2)  # reduce the exploration over time
 final_epsilon = 0.1
 
-env = gym.make("FrozenLake-v1", render_mode='human')
+env = gym.make("FrozenLake-v1", render_mode=None) # Change render_mode='human' to visualize training
 env = gym.wrappers.RecordEpisodeStatistics(env, buffer_length=n_episodes)
 
-agent = BlackjackAgent(
+"""
+# Unocmment to save training epsidoes as videos. NOTE: render_mode must be 'rgb_array'
+
+from gymnasium.wrappers import RecordVideo
+env = RecordVideo(env, video_folder="qlearning-agent", name_prefix="training",
+                  episode_trigger=lambda x: x % 2000 == 0)
+"""
+
+agent = QLearningAgent(
     env=env,
     learning_rate=learning_rate,
     initial_epsilon=start_epsilon,
     epsilon_decay=epsilon_decay,
     final_epsilon=final_epsilon,
 )
-
-
-from tqdm import tqdm
-#from gymnasium.wrappers import RecordEpisodeStatistics, RecordVideo
-
-#env = RecordVideo(env, video_folder="blackjack-agent", name_prefix="training",
-#                  episode_trigger=lambda x: x % 500 == 0)
-#env = RecordEpisodeStatistics(env)
-
 
 for episode in tqdm(range(n_episodes)):
     obs, info = env.reset()
@@ -120,9 +120,7 @@ for episode in tqdm(range(n_episodes)):
 
 
 
-## VISUALIZING TRAINING REWARD AND LENGTH
-
-from matplotlib import pyplot as plt
+# VISUALIZING TRAINING REWARD AND LENGTH
 
 def get_moving_avgs(arr, window, convolution_mode):
     return np.convolve(
@@ -137,7 +135,7 @@ fig, axs = plt.subplots(ncols=3, figsize=(12, 5))
 
 axs[0].set_title("Episode rewards")
 reward_moving_average = get_moving_avgs(
-    env.return_queue,
+    env.get_wrapper_attr('return_queue'),
     rolling_length,
     "valid"
 )
@@ -145,7 +143,7 @@ axs[0].plot(range(len(reward_moving_average)), reward_moving_average)
 
 axs[1].set_title("Episode lengths")
 length_moving_average = get_moving_avgs(
-    env.length_queue,
+    env.get_wrapper_attr('length_queue'),
     rolling_length,
     "valid"
 )
